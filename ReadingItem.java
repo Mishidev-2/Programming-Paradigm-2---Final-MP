@@ -39,7 +39,7 @@ public abstract class ReadingItem {
     public abstract void updateMaxProgress(String newMax); 
 
     protected void printCommonDetails() {
-        String star = isStarred ? "[★ FAVORITE]" : "";
+        String star = isStarred ? "[* FAVORITE]" : "";
         String status = isCompleted ? "[COMPLETED]" : "[ONGOING]"; 
         
         System.out.println("Title: " + title + " " + star + " " + status);
