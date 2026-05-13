@@ -90,7 +90,7 @@ public class ConsoleUI implements UserInterface {
             System.out.println("\n--- Your Library ---");
             for (int i = 0; i < manager.getItemCount(); i++) {
                 ReadingItem item = manager.getItem(i);
-                String star = item.isStarred() ? " ★" : "";
+                String star = item.isStarred() ? " * " : "";
                 System.out.println((i + 1) + ". " + item.getTitle() + star);
             }
             System.out.println("0. Go Back");
