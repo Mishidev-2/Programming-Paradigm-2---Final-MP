@@ -48,7 +48,7 @@ public class ConsoleUI implements UserInterface {
         System.out.print("Title: ");
         String title = scanner.nextLine();
 
-        System.out.print("Track progress by (1) Chapter or (2) Volume? : ");
+        System.out.print("Online (1) or Offline (2)? : ");
         String progressType = scanner.nextLine();
 
         System.out.print("Current Progress (Number/Name, or press Enter to skip): ");
@@ -70,7 +70,7 @@ public class ConsoleUI implements UserInterface {
 
         System.out.print("Star this? (y/n): ");
         boolean isStarred = scanner.nextLine().trim().equalsIgnoreCase("y");
-
+        
         System.out.print("Notes (Optional, press Enter to skip): ");
         String notes = scanner.nextLine();
 
@@ -78,9 +78,9 @@ public class ConsoleUI implements UserInterface {
         String link = scanner.nextLine();
 
         if (progressType.equals("2")) {
-            manager.addVolumeTrackedItem(title, progress, maxProgress, rating, review, isStarred, notes, link);
+            manager.addOfflineTrackedItem(title, progress, maxProgress, rating, review, isStarred, notes, link);
         } else {
-            manager.addChapterTrackedItem(title, progress, maxProgress, rating, review, isStarred, notes, link);
+            manager.addOnlineTrackedItem(title, progress, maxProgress, rating, review, isStarred, notes, link);
         }
         System.out.println("Entry saved successfully!");
     }
