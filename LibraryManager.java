@@ -31,4 +31,14 @@ public class LibraryManager {
         }
         return null;
     }
+
+    public ReadingItem getItem(String searchTitle) {
+        for (int i = 0; i < itemCount; i++) {
+            if (library[i].getTitle().equalsIgnoreCase(searchTitle.trim())) {
+                return library[i]; 
+            }
+        }
+        return null;
+    }
+
 }

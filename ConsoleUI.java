@@ -11,6 +11,11 @@ public class ConsoleUI implements UserInterface {
 
     @Override
     public void start() {
+
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        } //coulda made this a method but what the hell
+
         while (true) {
             System.out.println("\n=== PERSONAL READING TRACKER ===");
             System.out.println("1. New Entry");
@@ -80,7 +85,7 @@ public class ConsoleUI implements UserInterface {
         System.out.println("Entry saved successfully!");
     }
 
-    private void viewLibrary() {
+private void viewLibrary() {
         if (manager.isEmpty()) {
             System.out.println("\nYour library is empty.");
             return;
@@ -93,23 +98,29 @@ public class ConsoleUI implements UserInterface {
                 String star = item.isStarred() ? " * " : "";
                 System.out.println((i + 1) + ". " + item.getTitle() + star);
             }
+            
             System.out.println("0. Go Back");
-            System.out.print("Enter the number to view, or 0 to go back: ");
 
-            int index = -1;
+            System.out.print("Enter the NUMBER or exact TITLE to view, or 0 to go back: ");
+
+            String input = scanner.nextLine().trim();
+            if (input.equals("0")) break;
+
+            ReadingItem selectedItem = null;
+
             try { 
-                index = Integer.parseInt(scanner.nextLine()) - 1; 
+
+                int index = Integer.parseInt(input) - 1; 
+                selectedItem = manager.getItem(index);
             } catch (NumberFormatException e) { 
-                // Ignore invalid format and loop
+
+                selectedItem = manager.getItem(input);
             }
 
-            if (index == -1) break;
-
-            ReadingItem selectedItem = manager.getItem(index);
             if (selectedItem != null) {
                 viewItemDetails(selectedItem); 
             } else {
-                System.out.println("Invalid number.");
+                System.out.println("Item not found. Please check your spelling or number and try again.");
             }
         }
     }
